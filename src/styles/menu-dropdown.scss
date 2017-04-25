@@ -1,0 +1,32 @@
+//BULMA CSS DROPDOWN;
+.dropdown-container {
+  position: relative;
+}
+
+input[type=checkbox].dropdown-checkbox {
+  display: none;
+}
+
+div.dropdown-content {
+  display: none;
+}
+
+input[type=checkbox]:checked ~ div.dropdown-content {
+  display: inline;
+  position: absolute;
+  &.dropdown-bottom {
+    //background: yellow !important;
+    //left: -50%;
+    right: 0%;
+    top:100%;
+    //left: 0%;
+  }
+  &.dropdown-top {
+    //background: lightgreen !important;
+    bottom:100%;
+    left: 0%;
+  }
+}
+div.dropdown-content.box{
+  padding: 0.4em !important;
+}

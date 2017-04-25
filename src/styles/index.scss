@@ -1,0 +1,37 @@
+//@import "~bulma/bulma";
+//@import 'notifications.scss';
+//@import 'menu-dropdown.scss';
+//@import 'new-modifiers.scss';
+//@import 'form.scss';
+@import 'reset.scss';
+@import 'allcolors.scss';
+@import 'layout.scss';
+@import 'folders.scss';
+@import 'panel.scss';
+@import '../../node_modules/codemirror/lib/codemirror.css';
+
+
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
+//@each $name, $pair in $colors{
+//  $color: nth($pair, 1);
+//  .text-#{$name}{
+//    color: $color;
+//  }
+//}
+//
+//.text-large{
+//  font-size: $size-large;
+//}
+//.text-medium{
+//  font-size: $size-medium;
+//}

@@ -1,0 +1,65 @@
+div.folders{
+  padding: 2em 0em 2em 0.5em;
+  //height: 100vh;
+  //background: lightgreen;
+  div[class^=tree-]{
+    cursor: pointer;
+    padding: 0.2em;
+  }
+  .tree-tree{
+    position: relative;
+    .tree-children{
+      position: relative;
+    }
+  }
+  .tree-tree, .tree-leaf{
+    &:hover{
+      background: rgba(23,145,200,0.4);
+    }
+  }
+  .tree-leaf{
+    &.isOpen-TL{
+      background: lighten($bluegreen, 30);
+    }
+    &.isOpen-TR{
+      background: lighten($yellow, 25);
+    }
+    &.isOpen-BL{
+      background: lighten($purple, 25);
+    }
+    &.isOpen-BR{
+      background: lighten($brown, 25);
+    }
+  }
+}
+span.folder-icon{
+  width: 1.2em;
+  display: inline-block;
+  &.open{
+    color: $bluegreen;
+  }
+  &.closed{
+    //color: $red;
+    color: lighten($red, 7);
+  }
+}
+div.disable-app{
+  background: lighten($black, 25);
+  color: $white;
+  padding: 0.3em;
+  font-size: 1.1em;
+  width: 6em;
+  bottom: 40px;
+  text-align: center;
+  margin-top: 3em;
+  margin-left: 1em;
+  cursor: pointer;
+  user-select: none;
+  &:hover{
+    //background: lighten($red, 1);
+    background: lighten($black, 15);
+  }
+}
+span.repo-title{
+  font-size: 1.1em;
+}
