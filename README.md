@@ -1,9 +1,11 @@
+# Split editor view for repositories
+
 # Todo
 ## Test
-- [x] RequireSelf
-- [x] RequireAuth
-- [x] /requests/Users
-- [ ] /requests/Auth
-- [ ] UserProfile
-- [ ] UserIndex
-- [ ] Route redirection
+- [x] UI
+- [ ] Sync with repo
+- [ ] Offline storage
+- [x] Syntax highlight via highlight.js
+- [x] Max/Min/Close Icons
+- [ ] Make it Chrome addon
+
