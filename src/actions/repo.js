@@ -1,7 +1,9 @@
+import axios from 'axios'
 import { action } from 'mobx';
 import { ui } from '../stores'
 import common from './common'
-import {filePresent} from '../utils/repo'
+import {filePresent, treerizeResponse} from '../utils/repo'
+import {repoUrl} from '../utils/url'
 
 const uiChangerValue = common.attrChangerValue(ui)
 
@@ -116,12 +118,25 @@ let changeLeaf = action( (uid, value)=>{
 }
 )
 
+function getRepoTree(){
+  let url = repoUrl(ui.repoProvider, ui.repoUser, ui.repoName)
+  //console.log('rul',url)
+  axios.get(url)
+  .then((r)=>{
+    //console.log('response here', r)
+    let repoTree = treerizeResponse(r.data.tree) 
+    //console.log('respotree', repoTree)
+    uiChangerValue('repo',repoTree)
+  })
+}
+
 export default {
   toggleFolder,
   findFolder,
   openFile,
   recalcDividers,
   changeLeaf,
+  getRepoTree,
 }
 export {
   toggleFolder,
@@ -129,4 +144,5 @@ export {
   openFile,
   recalcDividers,
   changeLeaf,
+  getRepoTree,
 }

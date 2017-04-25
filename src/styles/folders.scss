@@ -1,5 +1,7 @@
 div.folders{
   padding: 2em 0em 2em 0.5em;
+  overflow-y: scroll;
+  max-height: 100vh;
   //height: 100vh;
   //background: lightgreen;
   div[class^=tree-]{

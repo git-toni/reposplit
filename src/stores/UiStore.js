@@ -24,10 +24,12 @@ class UiStore{
   @observable divThick = 8
   @observable nextPos = null
   @observable maximizedPanel = null
-  @observable foldersWidth = 12
-  @observable repoUser = 'ocean'
-  @observable repoName = 'octopus'
+  @observable foldersWidth = 14
+  @observable repoUser = 'bundler'
+  @observable repoName = 'bundler'
   @observable repoProvider = 'github'
+  @observable repo = null
+  /*
   @observable repo = {type:'tree',path:[], name:'', children: [
     {type:'leaf', path:[], name:'setup.rb', content:"ZGVmIGRpc2tmaWxlCiAgQGZpbGUuYXR0cmlidXRlc1s6bWFya3VwXSB8fD0g\nbWFya3VwX2Zvcl9maWxlKCcnLCBAZmlsZS5maWxlbmFtZSkKICBkYXRhID0g\naHRtbGlmeShAZmlsZS5jb250ZW50cywgQGZpbGUuYXR0cmlidXRlc1s6bWFy\na3VwXSkKCiAgIyBIYWNrIG91ciB3YXkgdG8gd29ya2luZyBoYXNoIGFuY2hv\ncnMgZm9yIHRoZSBSRUFETUUuCiAgIyBHaXRIdWIgZ2VuZXJhdGVzIGhlYWRl\nciBsaW5rcyBhcyAjc29tZS10aGluZyBhbmQgWUFSRAogICMgZ2VuZXJhdGVz\nIHRoZW0gYXMgI1NvbWVfdGhpbmcgc28gdGhpcyBtYWtlcyB0aGUgbmVjZXNz\nYXJ5CiAgIyBjaGFuZ2VzIHRvIHRoZSBnZW5lcmF0ZSBkb2NzIHNvIHRoZSBs\naW5rcyB3b3JrIGJvdGggb24KICAjIEdpdEh1YiBhbmQgaW4gdGhlIGRvY3Vt\nZW50YXRpb24uCiAgaWYgQGZpbGUubmFtZSA9PSAiUkVBRE1FIgogICAgZGF0\nYS5zY2FuKC9ocmVmXD1cIlwjKC4rKVwiLykuZWFjaCBkbyB8YmFkX2xpbmt8\nCiAgICAgIGRhdGEuZ3N1YiEoYmFkX2xpbmsuZmlyc3QsIGJhZF9saW5rLmZp\ncnN0LmNhcGl0YWxpemUuZ3N1YignLScsICdfJykpCiAgICBlbmQKICBlbmQK\nCiAgIjxkaXYgaWQ9J2ZpbGVjb250ZW50cyc+IiArIGRhdGEgKyAiPC9kaXY+\nIgplbmQK\n", uuid: guid()},
     {type:'leaf', path:[], name:'config.rb', content:"cmVxdWlyZSAnc2F3eWVyJwoKcGF0Y2ggPSBNb2R1bGUubmV3IGRvCiAgZGVm\nIGhyZWYob3B0aW9ucz1uaWwpCiAgICAjIFRlbXBvcmFyeSB3b3JrYXJvdW5k\nIGZvcjogaHR0cHM6Ly9naXRodWIuY29tL29jdG9raXQvb2N0b2tpdC5yYi9p\nc3N1ZXMvNzI3CiAgICBuYW1lLnRvX3MgPT0gInNzaCIgPyBAaHJlZiA6IHN1\ncGVyCiAgZW5kCmVuZAoKU2F3eWVyOjpSZWxhdGlvbi5zZW5kKDpwcmVwZW5k\nLCBwYXRjaCkK\n", uuid: guid()},
@@ -44,8 +46,15 @@ class UiStore{
       ]
     }
   ]}
+  */
 
 
+  get repoRetrieved(){
+    return !!this.repo
+  }
+  get repoIsSet(){
+    return !!this.repoName && !!this.repoUser && !!this.repoProvider
+  }
   get asJS(){
     return { 
       //errors: this.errors, 

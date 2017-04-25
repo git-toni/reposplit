@@ -19,6 +19,7 @@ class Viewport extends Component{
     let finalStyle = evolveDimensionsPC({width:(100-ui.foldersWidth), maxWidth:(100-ui.foldersWidth)})
     //console.log('divs VLR', ui.divVertical, ui.divLeft, ui.divRight)
     //console.log('panels TL - TR - BL - BR', !!ui.panelTL, !!ui.panelTR, !!ui.panelBL, !!ui.panelBR)
+    if(!ui.repoRetrieved) return null
     return(
       <div id='viewport' style={finalStyle}>
         {this.renderPanels()}

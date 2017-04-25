@@ -14,6 +14,7 @@ class Folders extends Component{
   render(){
     let {ui} = this.props
     let finalStyle = evolveDimensionsPC({width: ui.foldersWidth, maxWidth: ui.foldersWidth})
+    if(!ui.repoRetrieved) return null
     return(
       <div className={'folders'} style={finalStyle}>
         <span className="repo-title">

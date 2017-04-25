@@ -18,16 +18,26 @@ function pathSelfSettings(){
          ? `/users/${session.userData.id}/settings`
          : null
 }
+function repoUrl(provider, user, repo){
+  switch(provider){
+    case 'github':
+      return `https://api.github.com/repos/${user}/${repo}/git/trees/master?recursive=1`
+    default:
+      return ''
+  }
+}
 
 export {
   getUrlPath,
   pathUserProfile,
   pathSelfProfile,
   pathSelfSettings,
+  repoUrl,
 }
 export default {
   getUrlPath,
   pathUserProfile,
   pathSelfProfile,
   pathSelfSettings,
+  repoUrl,
 }
