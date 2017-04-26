@@ -26,9 +26,9 @@ class UiStore{
   @observable nextPos = null
   @observable maximizedPanel = null
   @observable foldersWidth = 20
-  @observable repoUser = 'bundler'
-  @observable repoName = 'bundler'
-  @observable repoProvider = 'github'
+  @observable repoUser = null
+  @observable repoName = null
+  @observable repoProvider = null
   @observable repo = null
   /*
   @observable repo = {type:'tree',path:[], name:'', children: [

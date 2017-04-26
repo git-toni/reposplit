@@ -1,6 +1,6 @@
 import path from 'path';  
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import {HotModuleReplacementPlugin} from 'webpack';
+import webpack, {HotModuleReplacementPlugin} from 'webpack';
 
 export default () => ({  
   entry: [
@@ -11,7 +11,7 @@ export default () => ({
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '.'
   },
   plugins: [
     new HtmlWebpackPlugin({

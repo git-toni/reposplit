@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot",
-    "test": "cross-env ENV=test jest --"
+    "test": "cross-env ENV=test jest --",
+    "build:dev": "webpack --env=dev --progress --profile --colors"
   },
   "repository": {
     "type": "git",

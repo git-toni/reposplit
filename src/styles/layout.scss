@@ -58,20 +58,6 @@ div[class^=Divider]{
 }
 .Divider-top{
   position: absolute;
-  //top: 0px;
-  //left: 20vw;
-  //height: 100vh;
-  //min-height: 100vh;
-  //width: 8px;
-  //background-color: purple;
-  //background-image: linear-gradient(to right, 
-  //                    rgba(255,255,255,0) 0%,
-  //                    rgba(255,255,255,0) 40%,
-  //                    rgba(255,0,0,0.5) 45%,
-  //                    rgba(255,0,0,1) 50%,
-  //                    rgba(255,0,0,0.5) 55%,
-  //                    rgba(255,255,255,0) 70%,
-  //                    rgba(255,255,255,0) 100%);
   background-image: linear-gradient(to right, 
                       rgba($white,0) 0%,
                       rgba($white,0) 40%,
@@ -82,14 +68,7 @@ div[class^=Divider]{
                       rgba($white,0) 100%);
 }
 .Divider-left, .Divider-right{
-  //margin-left: 10px;
   position: absolute;
-  //top: 0px;
-  //left: 20vw;
-  //height: 8px;
-  //min-height: 8px;
-  //width: 8px;
-  //background: orange;
 
   background-image: linear-gradient(to bottom, 
                       rgba($white,0) 0%,
@@ -101,13 +80,8 @@ div[class^=Divider]{
                       rgba($white,0) 100%);
 }
 .Divider-folder{
-  //position: absolute;
   position: absolute;
   z-index: 90;
-  //&:hover{
-  //  background: yellow;
-  //}
-  //background: lightgreen;
   background-image: linear-gradient(to right, 
                       rgba($white,0) 0%,
                       rgba($white,0) 40%,
