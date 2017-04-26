@@ -18,13 +18,14 @@ class UiStore{
   @observable panelBL = null
   @observable panelBR = null
   @observable activePanel = 'TL'
+  @observable openFolders = []
   @observable divVertical = null
   @observable divLeft = null
   @observable divRight = null
   @observable divThick = 8
   @observable nextPos = null
   @observable maximizedPanel = null
-  @observable foldersWidth = 14
+  @observable foldersWidth = 20
   @observable repoUser = 'bundler'
   @observable repoName = 'bundler'
   @observable repoProvider = 'github'

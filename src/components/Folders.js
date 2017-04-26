@@ -41,6 +41,7 @@ class Folders extends Component{
   renderRepo(){
     let {ui} = this.props
     let repo = ui.repo
+    //return repo.children.map( c => <TreeItem key={c.name} el={c} containerWidth={ui.foldersWidth} ui={ui} />)
     return repo.children.map( c => TreeItem(c, ui.foldersWidth, ui))
   }
 }

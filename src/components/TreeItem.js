@@ -1,7 +1,9 @@
 import React,{Component} from 'react';  
+import R from 'ramda'
 import {px, em} from '../utils/styles'
 import {repo} from '../actions'
 import {filePresent} from '../utils/repo'
+import {observer, inject} from 'mobx-react';
 import FileO from 'react-icons/lib/fa/file-o'
 import FolderClosed from 'react-icons/lib/fa/folder'
 import FolderOpen from 'react-icons/lib/fa/folder-open-o'
@@ -12,6 +14,32 @@ let {toggleFolder, openFile} = repo
 
 let depth = 0
 const vwWidth = document.documentElement.clientWidth
+@observer
+class TreeItem extends Component{
+  constructor(props){
+    super(props)
+  }
+  render(){
+    const {el, containerWidth, ui} = this.props
+    return item(el, containerWidth, ui)
+    //if(el.type === 'leaf'){
+    //  let isPresent = filePresent(ui, el)
+    //  let presence = !!isPresent ? isPresent : ''
+    //  //console.log('isPresent',isPresent)
+    //  //&#8984;
+    //  //return <div key={el.name}>ho</div>
+    //  return(
+    //    <div key={el.name} className={`tree-leaf isOpen-${presence}`} onClick={openFile.bind(null, el)}>
+    //      <FileO />
+    //      &nbsp;
+    //      {el.name}
+    //    </div>
+    //    )
+    //}
+
+    //return null
+  }
+}
 const item = (el, containerWidth, ui, depth=1) =>{
   //console.log('presence',el.name, presence)
   if(el.type === 'leaf'){
@@ -22,38 +50,54 @@ const item = (el, containerWidth, ui, depth=1) =>{
     return(
       <div key={el.name} className={`tree-leaf isOpen-${presence}`} onClick={openFile.bind(null, el)}>
         <FileO />
-         &nbsp;
+        &nbsp;
         {el.name}
       </div>
-    )
+      )
   }
   else if(el.type ==='tree'){
-    let spaceLeft = depth*8
+    let spaceLeft = Number(depth)*32
     let styles = {
       left: px(spaceLeft),
       width: px(vwWidth*(containerWidth/100)-spaceLeft)
     }
-    if(!!el._isOpen){
+    //console.log('render tree', el.name, el._isOpen)
+    let isOpen = R.findIndex(R.propEq('uuid',el.uuid))(ui.openFolders) > -1
+    //if(!!el._isOpen){
+    if(!!isOpen){
       //&darr;
+      
+      //<div className='tree-children' style={styles} >
+      //   {renderChildren(el,containerWidth, ui, depth++)}
+      // </div>
+      //return(
+      //  <div className="tree-tree" key={Math.random()} onClick={toggleFolder.bind(null, el.uuid)}>
+      //    <span className='folder-icon open'>
+      //      <FolderOpen />
+      //    </span>
+      //    {el.name}
+      //  </div>
+      //  )
       return([
-        <div className="tree-tree" key={Math.random()} onClick={toggleFolder.bind(null, el.uuid)}>
+        <div className="tree-tree" key={Math.random()} onClick={toggleFolder.bind(null, el)}>
           <span className='folder-icon open'>
-          <FolderOpen />
+            <FolderOpen />
           </span>
           {el.name}
         </div>,
         <div className='tree-children' style={styles} >
           {renderChildren(el,containerWidth, ui, depth++)}
         </div>
-          ]
-        )
+        ]
+      )
     }
-    else if(!el._isOpen){
+    //else if(!el._isOpen){
+    else if(!isOpen){
       //&rarr;
       return(
-        <div className="tree-tree" key={Math.random()} onClick={toggleFolder.bind(null, el.uuid)}>
+        <div className="tree-tree" key={Math.random()} onClick={toggleFolder.bind(null, el)}>
           <span className='folder-icon closed'>
-          <FolderClosed />
+            <FolderClosed />
           </span>
           {el.name}
         </div>
@@ -71,3 +115,4 @@ function renderChildren(el, containerWidth, ui, depth){
 //
 
 export default item
+//export default TreeItem

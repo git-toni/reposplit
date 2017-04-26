@@ -1,4 +1,5 @@
 import axios from 'axios'
+import R from 'ramda'
 import { action } from 'mobx';
 import { ui } from '../stores'
 import common from './common'
@@ -6,26 +7,45 @@ import {filePresent, treerizeResponse} from '../utils/repo'
 import {repoUrl} from '../utils/url'
 
 const uiChangerValue = common.attrChangerValue(ui)
+const uiArrayChanger = common.attrChangerArray(ui)
 
-function toggler(uuid){
-  let f = findFolder(ui.repo, uuid)
+function toggler(el){
+  //console.log('found folder',  el.name, findFolder(ui.repo, uuid))
+  //console.log('checked folder',  el.name, ui.openFolders.slice())
+  let f = findFolder(ui.repo, el.uuid)
+  let openFolders = ui.openFolders
+  let fo = R.findIndex(R.propEq('uuid',el.uuid))(openFolders)
+  console.log('foundfolder',  f.name, f.uuid)
   if(f){
-    f._isOpen = !f._isOpen
+    //f._isOpen = !f._isOpen
+    if(fo > -1){
+      openFolders.splice(fo,1)
+    }
+    else{
+      openFolders.push(f)
+    }
+    uiChangerValue('openFolders',openFolders)
   }
 }
 const toggleFolder = action(toggler)
 
 function findFolder(root, id){
+  //console.log('root is', root.name)
   for( let c of root.children ){
     if(c.type==='tree'){
       if(c.uuid===id){
         return c
       }
       else{
-        findFolder(c,id)
+        let son = findFolder(c,id)
+        if(!!son){
+          return son
+          break
+        }
       }
     }
   }
+  //return
 }
 
 function hasPanelLeft(){
@@ -126,7 +146,7 @@ function getRepoTree(){
     //console.log('response here', r)
     let repoTree = treerizeResponse(r.data.tree) 
     //console.log('respotree', repoTree)
-    uiChangerValue('repo',repoTree)
+    uiChangerValue('repo',R.clone(repoTree))
   })
 }
 
