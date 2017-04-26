@@ -1,6 +1,5 @@
 import React, {Component} from 'react';  
 import {observer, inject} from 'mobx-react';
-import { isAuthenticated } from '../utils/auth'
 import {Viewport, Folders, FolderDivider} from './'
 
 @inject('ui') @observer

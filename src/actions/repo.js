@@ -126,7 +126,6 @@ let getFileContent = (el, pos)=>{
     //el.content = r.data.content
     //el.state = 'loaded'
     //ui[`panel${pos}`].content = r.data.content
-    console.log('retrieved content',el )
     uiObjFieldChanger(`panel${pos}`,'content',r.data.content)
     uiObjFieldChanger(`panel${pos}`,'status','done')
     //recalcDividers()

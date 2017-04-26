@@ -1,7 +1,7 @@
 import React,{Component} from 'react';  
-import { IndexRoute, Router, Route, Link, browserHistory } from 'react-router'
+//import { IndexRoute, Router, Route, Link, browserHistory } from 'react-router'
 
-import {Modal, Header, Notifications, Loading} from './index'
+//import {Modal, Header, Notifications, Loading} from './index'
 
 function printCoord(e){
   console.log('conatiner coordinates: ',e.clientX, e.pageX, e.screenX, e.clientY, e.pageY, e.screenY )
@@ -15,12 +15,9 @@ class Layout extends Component{
   render(){
     return(
       <div id='app'>
-        <Loading />
-        <Notifications />
         <div id="container">
           {this.props.children}
         </div>
-        <Modal />
       </div>
       )
   }

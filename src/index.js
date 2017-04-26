@@ -7,8 +7,6 @@ import {Layout, App} from './components'
 
 import stores from './stores'
 import {general, common, repo} from './actions'
-import {login} from './utils/auth'
-import routes from './routing/routes'
 require('./styles/index.scss')
 
 useStrict(true)

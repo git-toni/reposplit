@@ -59,6 +59,12 @@ function detectLanguage(name){
     'scss': 'scss',
     'sass': 'sass',
     'html': 'sass',
+    'dart': 'dart',
+    'lua': 'lua',
+    'ts': 'typescript',
+    'm': 'matlab',
+    'jl': 'julia',
+    'go': 'go',
   }
   let choice = mappings[ext]
   choice = !!choice ? choice : ''

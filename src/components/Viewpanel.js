@@ -7,9 +7,9 @@ import { docco, github } from 'react-syntax-highlighter/dist/styles';
 import IconMaximize from 'react-icons/lib/md/zoom-out-map'
 import IconMinimize from 'react-icons/lib/md/dashboard'
 
-import CodeMirror from 'react-codemirror'
-require('codemirror/mode/javascript/javascript')
-require('codemirror/mode/ruby/ruby')
+//import CodeMirror from 'react-codemirror'
+//require('codemirror/mode/javascript/javascript')
+//require('codemirror/mode/ruby/ruby')
 
 
 function activeClass(active, pos){
