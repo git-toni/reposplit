@@ -56,7 +56,7 @@ const item = (el, containerWidth, ui, depth=1) =>{
       )
   }
   else if(el.type ==='tree'){
-    let spaceLeft = Number(depth)*32
+    let spaceLeft = Number(depth)*4
     let styles = {
       left: px(spaceLeft),
       width: px(vwWidth*(containerWidth/100)-spaceLeft)
@@ -65,27 +65,27 @@ const item = (el, containerWidth, ui, depth=1) =>{
     let isOpen = R.findIndex(R.propEq('uuid',el.uuid))(ui.openFolders) > -1
     //if(!!el._isOpen){
     if(!!isOpen){
-      //&darr;
-      
-      //<div className='tree-children' style={styles} >
-      //   {renderChildren(el,containerWidth, ui, depth++)}
-      // </div>
+
       //return(
-      //  <div className="tree-tree" key={Math.random()} onClick={toggleFolder.bind(null, el.uuid)}>
+      //  <div className="tree-tree" key={Math.random()} onClick={toggleFolder.bind(null, el)}>
       //    <span className='folder-icon open'>
       //      <FolderOpen />
       //    </span>
       //    {el.name}
+
+      //  <div className='tree-children' style={styles} >
+      //    {renderChildren(el,containerWidth, ui, depth++)}
       //  </div>
-      //  )
+      //  </div>
+      //)
       return([
-        <div className="tree-tree" key={Math.random()} onClick={toggleFolder.bind(null, el)}>
+        <div className="tree-tree" key={Math.random()} onClick={toggleFolder.bind(null, el)} >
           <span className='folder-icon open'>
             <FolderOpen />
           </span>
           {el.name}
         </div>,
-        <div className='tree-children' style={styles} >
+        <div className='tree-children' style={styles}>
           {renderChildren(el,containerWidth, ui, depth++)}
         </div>
         ]
@@ -95,7 +95,7 @@ const item = (el, containerWidth, ui, depth=1) =>{
     else if(!isOpen){
       //&rarr;
       return(
-        <div className="tree-tree" key={Math.random()} onClick={toggleFolder.bind(null, el)}>
+        <div className="tree-tree" key={Math.random()} onClick={toggleFolder.bind(null, el)} >
           <span className='folder-icon closed'>
             <FolderClosed />
           </span>

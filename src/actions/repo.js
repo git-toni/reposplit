@@ -10,6 +10,8 @@ const uiChangerValue = common.attrChangerValue(ui)
 const uiArrayChanger = common.attrChangerArray(ui)
 
 function toggler(el){
+  console.log('event', event)
+  //event.currentTarget.preventDefault()
   //console.log('found folder',  el.name, findFolder(ui.repo, uuid))
   //console.log('checked folder',  el.name, ui.openFolders.slice())
   let f = findFolder(ui.repo, el.uuid)
@@ -26,6 +28,7 @@ function toggler(el){
     }
     uiChangerValue('openFolders',openFolders)
   }
+  event.currentTarget.preventDefault()
 }
 const toggleFolder = action(toggler)
 
