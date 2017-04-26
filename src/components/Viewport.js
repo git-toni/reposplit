@@ -4,6 +4,7 @@ import ReactDraggable from 'react-draggable'
 import {Viewpanel} from './'
 import {evolveDimensions, evolveDimensionsPC, vh, vw, px, pc} from '../utils/styles'
 import {common, panels} from '../actions/'
+import FileO from 'react-icons/lib/fa/file-o'
 
 @inject('ui') @observer
 class Viewport extends Component{
@@ -17,9 +18,19 @@ class Viewport extends Component{
   render(){
     let {ui} = this.props
     let finalStyle = evolveDimensionsPC({width:(100-ui.foldersWidth), maxWidth:(100-ui.foldersWidth)})
-    //console.log('divs VLR', ui.divVertical, ui.divLeft, ui.divRight)
-    //console.log('panels TL - TR - BL - BR', !!ui.panelTL, !!ui.panelTR, !!ui.panelBL, !!ui.panelBR)
     if(!ui.repoRetrieved) return null
+
+    if(!ui.anyFileOpen){
+      return(
+        <div id='nofiles' style={finalStyle}>
+          <span>
+            Click on your desired file
+            &nbsp;
+            <FileO />
+          </span>
+        </div>
+      )
+    }
     return(
       <div id='viewport' style={finalStyle}>
         {this.renderPanels()}

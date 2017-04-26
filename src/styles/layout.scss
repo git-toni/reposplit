@@ -39,6 +39,20 @@ div#viewport{
   //width: 100%;
   //max-width: 100vw;
 }
+div#nofiles{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span{
+    color: #dedede;
+    font-size: 2em;
+    svg{
+      width: 3em;
+      height: 3em;
+    }
+  }
+}
 div[class^=Divider]{
   cursor: pointer;
 }

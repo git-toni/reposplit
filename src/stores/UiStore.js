@@ -49,7 +49,12 @@ class UiStore{
   ]}
   */
 
-
+  get anyFileOpen(){
+    return !!this.panelTL 
+        || !!this.panelTR
+        || !!this.panelBL 
+        || !!this.panelBR
+  }
   get repoRetrieved(){
     return !!this.repo
   }
