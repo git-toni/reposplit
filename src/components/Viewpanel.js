@@ -15,6 +15,7 @@ require('codemirror/mode/ruby/ruby')
 function activeClass(active, pos){
   return active === pos ? 'activePanel' : ''
 }
+@observer
 class Viewpanel extends Component{
   constructor(props){
     super(props)
@@ -28,7 +29,7 @@ class Viewpanel extends Component{
       scrollbarStyle: null,
     }
     let code = ''
-    if(el.content){
+    if(!!el.content){
       code = new Buffer.from(el.content,'base64').toString('ascii')
     }
     if(!!maximizedPanel && maximizedPanel !== pos){
@@ -45,11 +46,11 @@ class Viewpanel extends Component{
         </span>
         <div className="buttonry">
           { maximizedPanel === pos ?
-          <span className="minimize" onClick={onMinimizePanel}> 
+          <span title='Minimize' className="minimize" onClick={onMinimizePanel}> 
             <IconMinimize /> 
           </span>
             :
-            <span className="maximize" onClick={onMaximizePanel.bind(null, pos)}> 
+            <span title='Maximize' className="maximize" onClick={onMaximizePanel.bind(null, pos)}> 
               <IconMaximize /> 
             </span>
           }

@@ -45,6 +45,7 @@ class Viewport extends Component{
     //return(<span>hola</span>)
     if(p){
       let coord = this.getPanelPosition(pos)
+      //console.log('receiving pos',pos)
       return(
         <Viewpanel 
           activePanel={ui.activePanel}

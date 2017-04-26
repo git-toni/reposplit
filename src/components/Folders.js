@@ -19,14 +19,16 @@ class Folders extends Component{
       <div className={'folders'} style={finalStyle}>
         <span className="repo-title">
         {this.repoLogo()}
-
+        &nbsp;
         {ui.repoUser+'/'+ui.repoName}
         </span>
         <br/>
         <br/>
         {this.renderRepo()}
         <div className="disable-app">
-          Back
+          <span>
+            Disable plugin
+          </span>
         </div>
       </div>
       )

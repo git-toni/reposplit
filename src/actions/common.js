@@ -18,13 +18,21 @@ const attrChangerArray =(store)=>{
   }
   return action(changer)
 }
+const attrChangerObjField =(store)=>{
+  let changer = (attr, field, v)=>{
+      store[attr][field] = v
+  }
+  return action(changer)
+}
 export default {
   attrChanger,
   attrChangerValue,
   attrChangerArray,
+  attrChangerObjField,
 }
 export {
   attrChanger,
   attrChangerValue,
   attrChangerArray,
+  attrChangerObjField,
 }

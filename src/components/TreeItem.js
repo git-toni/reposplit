@@ -41,7 +41,6 @@ class TreeItem extends Component{
   }
 }
 const item = (el, containerWidth, ui, depth=1) =>{
-  //console.log('presence',el.name, presence)
   if(el.type === 'leaf'){
     let isPresent = filePresent(ui, el)
     let presence = !!isPresent ? isPresent : ''

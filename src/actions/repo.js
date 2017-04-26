@@ -8,16 +8,12 @@ import {repoUrl} from '../utils/url'
 
 const uiChangerValue = common.attrChangerValue(ui)
 const uiArrayChanger = common.attrChangerArray(ui)
+const uiObjFieldChanger = common.attrChangerObjField(ui)
 
 function toggler(el){
-  console.log('event', event)
-  //event.currentTarget.preventDefault()
-  //console.log('found folder',  el.name, findFolder(ui.repo, uuid))
-  //console.log('checked folder',  el.name, ui.openFolders.slice())
   let f = findFolder(ui.repo, el.uuid)
   let openFolders = ui.openFolders
   let fo = R.findIndex(R.propEq('uuid',el.uuid))(openFolders)
-  console.log('foundfolder',  f.name, f.uuid)
   if(f){
     //f._isOpen = !f._isOpen
     if(fo > -1){
@@ -28,12 +24,10 @@ function toggler(el){
     }
     uiChangerValue('openFolders',openFolders)
   }
-  event.currentTarget.preventDefault()
 }
 const toggleFolder = action(toggler)
 
 function findFolder(root, id){
-  //console.log('root is', root.name)
   for( let c of root.children ){
     if(c.type==='tree'){
       if(c.uuid===id){
@@ -108,32 +102,39 @@ function openFile(el){
     : (
       ui.activePanel ? ui.activePanel : 'TL'
     )
-    /*
-  if(!el.isOpen){
-    //let currentOpen = ui[`panel${choice}`]
-    ////el.isOpen = !!el.isOpen ? el.isOpen : choice
-    //changeLeaf(el.uuid, choice)
-    //if(!!currentOpen){
-    //  changeLeaf(currentOpen.uuid, null)
-    //  //ui[`panel${choice}`].isOpen = null
-    //}
-    uiChangerValue(`panel${choice}`,el)
-    recalcDividers()
-  }
-  */
   let fileOpen = filePresent(ui,el)
-  //console.log('fileopen',fileOpen)
   if(!fileOpen){
     uiChangerValue(`panel${choice}`,el)
     recalcDividers()
+    if(!el.content){
+      uiObjFieldChanger(`panel${choice}`,'status','loading')
+      getFileContent(el, choice)
+    }
   }
 }
-//function changeLeaf(uid,)
 function setField(field, value){
   return function(el){
     el[field] = value
   }
 }
+
+//function getFileContent(el, pos){
+let getFileContent = (el, pos)=>{
+  axios.get(el.url)
+  .then((r)=>{
+    //console.log('response content',r)
+    //el.content = r.data.content
+    //el.state = 'loaded'
+    //ui[`panel${pos}`].content = r.data.content
+    console.log('retrieved content',el )
+    uiObjFieldChanger(`panel${pos}`,'content',r.data.content)
+    uiObjFieldChanger(`panel${pos}`,'status','done')
+    //recalcDividers()
+  })
+}
+
+
+let actionGetFileContent = action(getFileContent)
 
 let changeLeaf = action( (uid, value)=>{
   let setValue = action( setField('isOpen',value) )

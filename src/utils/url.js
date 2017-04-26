@@ -26,6 +26,14 @@ function repoUrl(provider, user, repo){
       return ''
   }
 }
+function siteUrl(provider, user, repo){
+  switch(provider){
+    case 'github':
+      return `https://github.com/repos/${user}/${repo}`
+    default:
+      return ''
+  }
+}
 
 export {
   getUrlPath,
@@ -33,6 +41,7 @@ export {
   pathSelfProfile,
   pathSelfSettings,
   repoUrl,
+  siteUrl,
 }
 export default {
   getUrlPath,
@@ -40,4 +49,5 @@ export default {
   pathSelfProfile,
   pathSelfSettings,
   repoUrl,
+  siteUrl,
 }

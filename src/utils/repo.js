@@ -27,10 +27,12 @@ function treerizeResponse(resp){
     name = e.path.split('/').slice(-1)[0]
     br = getBranch(root, pt)
     newPath = !!br.name ? br.path.concat(br.name) : br.path
-    node = {type: typeMap[e.type], path: newPath, name: name, url: e.url, size: e.size, uuid: e.sha}
+    node = {type: typeMap[e.type], path: newPath, name: name, url: e.url, size: e.size, uuid: e.sha, content: null,status:''}
     if(e.type==='tree') node = Object.assign(node, {children: []})
     br.children.push(node)
   })
+  //return root
+  root.children = sortTypeName(root.children)
   return root
 }
 function getBranch(root,pt){
@@ -59,6 +61,20 @@ function findPath(br, p){
     }
   }
   return false
+}
+
+let attrSort = (attr) => R.sortBy(R.compose(R.toLower, R.prop(attr)))
+let nameSort = attrSort('name')
+
+function sortTypeName(nodes){
+  let trees = R.filter(R.propEq('type','tree'))(nodes)
+  let leaves = R.filter(R.propEq('type','leaf'))(nodes)
+  trees.forEach(t =>{
+    t.children = sortTypeName(t.children)
+  })
+  trees = nameSort(trees)
+  leaves = nameSort(leaves)
+  return trees.concat(leaves)
 }
 
 export {
