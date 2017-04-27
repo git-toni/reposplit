@@ -9,7 +9,7 @@
 </div>
 
 ## Demo
-![RepoSplit](extensions/demo.gif)
+![RepoSplitDemo](extension/demo.gif)
 
 ## Todo
 - [x] UI
