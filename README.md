@@ -8,7 +8,7 @@
   <strong>Split editor view for online code repositories</strong>
 </div>
 
-##Demo
+## Demo
 ![RepoSplit](https://github.com/git-toni/reposplit/blob/master/extension/demo.gif)
 
 ## Todo
