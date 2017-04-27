@@ -9,9 +9,6 @@
 </div>
 
 ## Demo
-![RepoSplit](https://github.com/git-toni/reposplit/blob/master/extension/demo.gif)
-
-
 <img src='extension/demo.gif' />
 
 ## Todo
