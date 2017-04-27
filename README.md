@@ -11,6 +11,12 @@
 ## Demo
 <img src='extension/demo.gif' />
 
+## Install
+
+1. Install Chrome extension from [url](https://chrome.google.com/webstore/detail/repo-split/ijjekenpnfnppndkdnfmcamnjaiocmgn)
+2. Go to any Github repository
+3. Click on the **RepoSplit** icon
+
 ## Todo
 - [x] UI
 - [x] Sync with repo
@@ -26,5 +32,6 @@
 - [ ] Make Firefox extension
 - [ ] Tests, hello?
 - [ ] Allow Color Themes
+- [ ] Live Markdown preview
 - [ ] NPanels > 4 ( Long one )
 
