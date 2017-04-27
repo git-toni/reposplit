@@ -11,7 +11,7 @@ export default () => ({
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '.'
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -61,4 +61,28 @@ export default () => ({
   resolve: {
     extensions: [ '.js', '.jsx'],
   },
+  externals:{
+    //react: {
+    //  root: 'React',
+    //  commonjs2: 'react',
+    //  commonjs: 'react',
+    //  amd: 'react',
+    //  umd: 'react',
+    //},
+    //'react-dom': {
+    //  root: 'ReactDOM',
+    //  commonjs2: 'react-dom',
+    //  commonjs: 'react-dom',
+    //  amd: 'react-dom',
+    //  umd: 'react-dom',
+    //},
+    //'ramda': {
+    //  root: 'R',
+    //  commonjs2: 'ramda',
+    //  commonjs: 'ramda',
+    //  amd: 'ramda',
+    //  umd: 'ramda',
+    //},
+  }
+
 });

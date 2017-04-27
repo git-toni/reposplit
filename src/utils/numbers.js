@@ -3,7 +3,7 @@
 //  return (x)=> Math.round(x*di)/di
 //}
 import R from 'ramda'
-import CryptoJS from 'crypto-js'
+//import CryptoJS from 'crypto-js'
 const roundDecimals =(digits=2)=>{
   let doRound = (x, di) =>{
     let digi = Math.pow(10,di)
@@ -53,19 +53,19 @@ function guid() {
 }
 
 const friendlyMoneyNum = R.compose(mWrapper,moneyNum)
-function base64url(source) {
-  // Encode in classical base64
-  let encodedSource = CryptoJS.enc.Base64.stringify(source);
-
-  // Remove padding equal characters
-  encodedSource = encodedSource.replace(/=+$/, '');
-
-  // Replace characters according to base64url specifications
-  encodedSource = encodedSource.replace(/\+/g, '-');
-  encodedSource = encodedSource.replace(/\//g, '_');
-
-  return encodedSource;
-}
+//function base64url(source) {
+//  // Encode in classical base64
+//  let encodedSource = CryptoJS.enc.Base64.stringify(source);
+//
+//  // Remove padding equal characters
+//  encodedSource = encodedSource.replace(/=+$/, '');
+//
+//  // Replace characters according to base64url specifications
+//  encodedSource = encodedSource.replace(/\+/g, '-');
+//  encodedSource = encodedSource.replace(/\//g, '_');
+//
+//  return encodedSource;
+//}
 function movedDate(days){
   return Math.floor( ( (+new Date())+864e5*(days) )/1000.0 )
 }

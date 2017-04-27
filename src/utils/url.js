@@ -5,6 +5,25 @@ function getUrlPath(url){
 
   return pattern.exec(url)[3]
 }
+function getRepoFromUrl(url){
+  let pattern = /(http[s]?:\/\/)?([^\/\s]+\/)(.*)/gi
+  let match = pattern.exec(url)
+  let repoProvider = match[2].replace('/','')
+  let reposplit = repoProvider.split('.')
+  switch(reposplit.length){
+    case 2:
+      repoProvider = reposplit[0]
+      break;
+    case 3:
+      repoProvider = reposplit[1]
+      break;
+    default:
+      break;
+  }
+  let params = match[3].split('/')
+  return {repoProvider, repoUser: params[0], repoName: params[1]}
+
+}
 function repoUrl(provider, user, repo){
   switch(provider){
     case 'github':
@@ -16,7 +35,7 @@ function repoUrl(provider, user, repo){
 function siteUrl(provider, user, repo){
   switch(provider){
     case 'github':
-      return `https://github.com/repos/${user}/${repo}`
+      return `https://github.com/${user}/${repo}`
     default:
       return ''
   }
@@ -26,9 +45,11 @@ export {
   getUrlPath,
   repoUrl,
   siteUrl,
+  getRepoFromUrl,
 }
 export default {
   getUrlPath,
   repoUrl,
   siteUrl,
+  getRepoFromUrl,
 }

@@ -3,6 +3,7 @@ import {observer, inject} from 'mobx-react';
 import R from 'ramda'
 import {evolveDimensions, evolveDimensionsPC, vh, vw, px, pc} from '../utils/styles'
 import {filePresent} from '../utils/repo'
+import {siteUrl} from '../utils/url'
 import GithubLogo from 'react-icons/lib/fa/github'
 import TreeItem from './TreeItem'
 
@@ -17,21 +18,30 @@ class Folders extends Component{
     if(!ui.repoRetrieved) return null
     return(
       <div className={'folders'} style={finalStyle}>
+        <div id="app-logo">
+          <a href='https://www.google.cat' id="aapp-logo">
+            reposplit
+          </a>
+        </div>
+        <br/>
         <span className="repo-title">
         {this.repoLogo()}
         &nbsp;
+        <a id='repo-link' href={siteUrl(ui.repoProvider, ui.repoUser, ui.repoName)}>
         {ui.repoUser+'/'+ui.repoName}
+        </a>
         </span>
         <br/>
         <br/>
         {this.renderRepo()}
-        <div className="disable-app">
-          <span>
-            Disable plugin
-          </span>
-        </div>
       </div>
       )
+
+      //<div className="disable-app">
+      //   <span>
+      //     Disable plugin
+      //   </span>
+      // </div>
   }
   repoLogo(){
     return(

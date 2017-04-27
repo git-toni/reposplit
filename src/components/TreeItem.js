@@ -14,6 +14,7 @@ let {toggleFolder, openFile} = repo
 
 let depth = 0
 const vwWidth = document.documentElement.clientWidth
+/*
 @observer
 class TreeItem extends Component{
   constructor(props){
@@ -40,6 +41,7 @@ class TreeItem extends Component{
     //return null
   }
 }
+*/
 const item = (el, containerWidth, ui, depth=1) =>{
   if(el.type === 'leaf'){
     let isPresent = filePresent(ui, el)
@@ -58,7 +60,8 @@ const item = (el, containerWidth, ui, depth=1) =>{
     let spaceLeft = Number(depth)*4
     let styles = {
       left: px(spaceLeft),
-      width: px(vwWidth*(containerWidth/100)-spaceLeft)
+      //width: px(vwWidth-spaceLeft)
+      //width: px(vwWidth*(containerWidth/100)-spaceLeft)
     }
     //console.log('render tree', el.name, el._isOpen)
     let isOpen = R.findIndex(R.propEq('uuid',el.uuid))(ui.openFolders) > -1

@@ -1,14 +1,30 @@
-# Split editor view for repositories
+# Repo Split 
 
-# Todo
-## Test
+<div align="center">
+  <img alt="Logo" src="extension/smallpromo.png" height="163px" />
+</div>
+
+<div align="center">
+  <strong>Split editor view for online code repositories</strong>
+</div>
+
+##Demo
+![RepoSplit](https://github.com/git-toni/reposplit/blob/master/extension/demo.gif)
+
+## Todo
 - [x] UI
-- [ ] Sync with repo
-- [ ] Offline storage
+- [x] Sync with repo
 - [x] Syntax highlight via highlight.js
 - [x] Max/Min/Close Icons
-- [ ] Make it Chrome addon
-- [ ] Sort repo by 1) type 2) name ABCD
-- [ ] Add empty page text
+- [x] Make it Chrome addon
+- [x] Sort repo by 1) type 2) name ABCD
+- [x] Add empty page text
+- [ ] Offline storage
 - [ ] Check when Repo is truncated
+- [ ] Add Gitlab compat
+- [ ] Add Bitbucket compat
+- [ ] Make Firefox extension
+- [ ] Tests, hello?
+- [ ] Allow Color Themes
+- [ ] NPanels > 4 ( Long one )
 

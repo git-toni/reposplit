@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "Repo Split",
+  "description": "Browse code in a comfortable way",
+  "version": "0.1",
+  "browser_action": {
+   "default_title": "Repo Split"
+  },
+  "icons":{
+    "16":"icon.png",
+    "48":"icon.png"
+  },
+  "permissions": [
+    "https://github.com/*"
+  ],
+  "background": {
+    "scripts": ["starter.js"]
+  }
+}

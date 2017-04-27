@@ -1,5 +1,5 @@
 div.folders{
-  padding: 2em 0em 2em 0.5em;
+  padding: 1em 0em 2em 0.5em;
   overflow-y: auto;
   max-height: 98vh;
   //height: 100vh;
@@ -19,7 +19,7 @@ div.folders{
   }
   .tree-tree, .tree-leaf{
     &:hover{
-      background: rgba(23,145,200,0.4);
+      background: rgba(23,145,200,0.1);
     }
   }
   .tree-leaf{
@@ -34,6 +34,18 @@ div.folders{
     }
     &.isOpen-BR{
       background: lighten($brown, 25);
+    }
+  }
+  #app-logo a{
+    //font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: $black;
+    margin-bottom: 2em;
+    &:hover{
+      color: lighten($black, 30);
     }
   }
 }
@@ -98,10 +110,14 @@ div.disable-app{
 }
 span.repo-title{
   font-size: 1.1em;
+  font-weight: bold;
 }
 span.repo-logo{
   svg{
     height: 1.6em;
     width: 1.6em;
   }
+}
+a#repo-link{
+  color: $bluegreen;
 }

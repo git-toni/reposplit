@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import {useStrict, transaction} from 'mobx';
 import {observer, Provider, inject} from 'mobx-react';
 import {Layout, App} from './components'
+import {getUrlPath, getRepoFromUrl} from './utils/url'
 
 import stores from './stores'
 import {general, common, repo} from './actions'
@@ -12,7 +13,6 @@ require('./styles/index.scss')
 useStrict(true)
 
 
-//{routes}
 function renderApp(){
   ReactDOM.render(
     <Provider {...stores}>
@@ -22,7 +22,10 @@ function renderApp(){
     </Provider>
     , document.getElementById('main'));  
 }
-setRepo('github','bundler','bundler')
+
+let {repoProvider, repoUser, repoName} = getRepoFromUrl(window.location.href)
+setRepo(repoProvider, repoUser, repoName)
+//setRepo('github', 'bundler', 'bundler')
 retrieveRepo()
 renderApp()
 
