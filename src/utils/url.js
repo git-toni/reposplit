@@ -10,6 +10,7 @@ function getRepoFromUrl(url){
   let match = pattern.exec(url)
   let repoProvider = match[2].replace('/','')
   let reposplit = repoProvider.split('.')
+  let repoBranch = 'master'
   switch(reposplit.length){
     case 2:
       repoProvider = reposplit[0]
@@ -21,21 +22,24 @@ function getRepoFromUrl(url){
       break;
   }
   let params = match[3].split('/')
-  return {repoProvider, repoUser: params[0], repoName: params[1]}
+  if(params.length > 2 && params[2] === 'tree'){
+    repoBranch = params[3]
+  }
+  return {repoProvider, repoUser: params[0], repoName: params[1], repoBranch}
 
 }
-function repoUrl(provider, user, repo){
+function repoUrl(provider, user, repo, branch){
   switch(provider){
     case 'github':
-      return `https://api.github.com/repos/${user}/${repo}/git/trees/master?recursive=1`
+      return `https://api.github.com/repos/${user}/${repo}/git/trees/${branch}?recursive=1`
     default:
       return ''
   }
 }
-function siteUrl(provider, user, repo){
+function siteUrl(provider, user, repo, branch){
   switch(provider){
     case 'github':
-      return `https://github.com/${user}/${repo}`
+      return `https://github.com/${user}/${repo}/tree/${branch}`
     default:
       return ''
   }

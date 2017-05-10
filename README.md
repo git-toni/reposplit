@@ -33,6 +33,8 @@ Feedback very much appreciated!
 - [x] Make it Chrome addon
 - [x] Sort repo by 1) type 2) name ABCD
 - [x] Add empty page text
+- [x] Browse non-Master branches
+- [ ] Chrome button as a toggle for RepoSplit view
 - [ ] Offline storage
 - [ ] Check when Repo is truncated
 - [ ] Add Gitlab compat

@@ -10,6 +10,7 @@ import IconMinimize from 'react-icons/lib/md/dashboard'
 //import CodeMirror from 'react-codemirror'
 //require('codemirror/mode/javascript/javascript')
 //require('codemirror/mode/ruby/ruby')
+//require('codemirror/lib/codemirror.css');
 
 
 function activeClass(active, pos){
@@ -35,6 +36,7 @@ class Viewpanel extends Component{
     if(!!maximizedPanel && maximizedPanel !== pos){
       return null
     }
+    //console.log(code)
     return(
       //<div onDragOver={(e)=> e.preventDefault()} onDrop={(e)=> e.preventDefault()} className={this.props.className} style={finalStyle}>
       <div className={this.props.className +' '+ (activeClass(activePanel, pos))} 
@@ -62,6 +64,9 @@ class Viewpanel extends Component{
         </SyntaxHighlighter>
       </div>
       )
+      //<SyntaxHighlighter wrapLines={true} language={detectLanguage(el.name)} style={docco}>
+      //     {code}
+      //  </SyntaxHighlighter>
       //<CodeMirror value={code} options={options} />
       //<SyntaxHighlighter language='ruby' style={docco}>
       //   {code}
@@ -103,4 +108,8 @@ class Viewpanel extends Component{
   }
 }
 
+
+//let saample = "function createStyleObject(classNames, style) {  \nreturn classNames.reduce((styleObject, className) => {    \nreturn {...styleObject, ...style[className]};  \n}, {});\n} \n\nfunction createClassNameString(classNames) {  \nreturn classNames.join(' ');\n}"
+
+//let rubysample = '# frozen_string_literal: true\n# Capistrano task for Bundler.\n#\n# Add "require \'bundler/capistrano\'" in your Capistrano deploy.rb, and\n# Bundler will be activated after each new deployment.\nrequire "bundler/deployment"\nrequire "capistrano/version"\n\nif defined?(Capistrano::Version) && Gem::Version.new(Capistrano::Version).release >= Gem::Version.new("3.0")\n raise "For Capistrano 3.x integration, please use http://github.com/capistrano/bundler"\nend\n\nCapistrano::Configuration.instance(:must_exist).load do\n  before "deploy:finalize_update", "bundle:install"\n  Bundler::Deployment.define_task(self, :task, :except => { :no_release => true })\n  set :rake, lambda { "#{fetch(:bundle_cmd, "bundle")} exec rake" }\nend\n'
 export default Viewpanel

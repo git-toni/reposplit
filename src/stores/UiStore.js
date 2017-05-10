@@ -29,6 +29,8 @@ class UiStore{
   @observable repoUser = null
   @observable repoName = null
   @observable repoProvider = null
+  @observable repoBranch = null
+  @observable repoTruncated = false
   @observable repo = null
   /*
   @observable repo = {type:'tree',path:[], name:'', children: [

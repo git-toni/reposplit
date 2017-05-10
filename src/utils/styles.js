@@ -38,7 +38,7 @@ function evolveDimensionsPC(target){
 }
 
 function detectLanguage(name){
-  let ext = name.split('.').slice(-1)
+  let ext = name.split('.').slice(-1)[0]
   let mappings = {
     'js': 'javascript',
     'json': 'javascript',
@@ -57,7 +57,7 @@ function detectLanguage(name){
     'md': 'markdown',
     'css': 'css',
     'scss': 'scss',
-    'sass': 'sass',
+    'sass': 'scss',
     'html': 'sass',
     'dart': 'dart',
     'lua': 'lua',
@@ -67,7 +67,9 @@ function detectLanguage(name){
     'go': 'go',
   }
   let choice = mappings[ext]
-  choice = !!choice ? choice : ''
+  //choice = !!choice ? choice : ''
+  choice = !!choice ? choice : 'javascript'
+  //console.log('ext choice',ext, choice)
   return choice
 }
 

@@ -5,6 +5,7 @@ import {evolveDimensions, evolveDimensionsPC, vh, vw, px, pc} from '../utils/sty
 import {filePresent} from '../utils/repo'
 import {siteUrl} from '../utils/url'
 import GithubLogo from 'react-icons/lib/fa/github'
+import GitBranch from 'react-icons/lib/go/git-branch'
 import TreeItem from './TreeItem'
 
 @inject('ui') @observer
@@ -14,7 +15,7 @@ class Folders extends Component{
   }
   render(){
     let {ui} = this.props
-    let finalStyle = evolveDimensionsPC({width: ui.foldersWidth, maxWidth: ui.foldersWidth})
+    let finalStyle = evolveDimensionsPC({left: 0, top:0, width: ui.foldersWidth, maxWidth: ui.foldersWidth})
     if(!ui.repoRetrieved) return null
     return(
       <div className={'folders'} style={finalStyle}>
@@ -27,9 +28,15 @@ class Folders extends Component{
         <span className="repo-title">
         {this.repoLogo()}
         &nbsp;
-        <a id='repo-link' href={siteUrl(ui.repoProvider, ui.repoUser, ui.repoName)}>
+        <a id='repo-link' href={siteUrl(ui.repoProvider, ui.repoUser, ui.repoName, ui.repoBranch)}>
         {ui.repoUser+'/'+ui.repoName}
         </a>
+        </span>
+        <br/>
+        <span className="repo-branch">
+          <GitBranch/>
+          &nbsp;
+          {ui.repoBranch}
         </span>
         <br/>
         <br/>

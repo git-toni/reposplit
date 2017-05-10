@@ -142,14 +142,18 @@ let changeLeaf = action( (uid, value)=>{
 )
 
 function getRepoTree(){
-  let url = repoUrl(ui.repoProvider, ui.repoUser, ui.repoName)
+  let url = repoUrl(ui.repoProvider, ui.repoUser, ui.repoName, ui.repoBranch)
   //console.log('rul',url)
   axios.get(url)
   .then((r)=>{
-    //console.log('response here', r)
     let repoTree = treerizeResponse(r.data.tree) 
-    //console.log('respotree', repoTree)
     uiChangerValue('repo',R.clone(repoTree))
+    return r
+  })
+  .then( r =>{
+    if(!!r.data.truncated){
+      uiChangerValue('repoTruncated',true)
+    }
   })
 }
 
