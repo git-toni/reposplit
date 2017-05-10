@@ -23,8 +23,13 @@ function renderApp(){
     , document.getElementById('main'));  
 }
 
+let uiStoreChanger = common.attrChangerValue(stores.ui)
+uiStoreChanger('mainLoading',true)
 let {repoProvider, repoUser, repoName, repoBranch} = getRepoFromUrl(window.location.href)
 setRepo(repoProvider, repoUser, repoName, repoBranch)
+//setRepo('gitlab', 'gitlab-org','gitlab-ce', 'master')
+//setRepo('gitlab', 'Rich-Harris','buble', 'master')
+//setRepo('github', 'electron', 'electron', 'master')
 //setRepo('github', 'bundler', 'bundler', 'auto')
 //setRepo('github', 'callemall', 'material-ui', 'master')
 //setRepo('github', 'github-tools', 'github')
@@ -33,7 +38,7 @@ renderApp()
 
 
 function setRepo(provider, user, repo, branch){
-  let uiStoreChanger = common.attrChangerValue(stores.ui)
+  //let uiStoreChanger = common.attrChangerValue(stores.ui)
   uiStoreChanger('repoProvider',provider)
   uiStoreChanger('repoUser',user)
   uiStoreChanger('repoName',repo)

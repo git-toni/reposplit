@@ -108,6 +108,42 @@ div.disable-app{
 
   }
 }
+
+div.loading-indicator{
+  //position: relative;
+  //display: flex;
+  //width: 100%;
+  //margin-top: 3em;
+  //justify-content: center;
+  //align-items: center;
+  span{
+    color: $red;
+    //background: lighten($black, 25);
+    //color: $white;
+    //padding: 0.3em;
+    font-size: 1em;
+    //border: 1px solid $red;
+    //width: 6em;
+    //bottom: 40px;
+    text-align: center;
+    //margin-top: 3em;
+    //margin-left: 1em;
+    //cursor: pointer;
+    user-select: none;
+    //&:hover{
+    //  //background: $red;
+    //  //color: $white;
+    //  //background: $red;
+    //  color: darken($red, 30);
+    //  border: 1px solid darken($red, 30);
+    //}
+
+  }
+}
+.retrieving-indicator{
+  color: $green;
+  font-size: 1.1em;
+}
 span.repo-title{
   font-size: 1.1em;
   font-weight: bold;

@@ -14,8 +14,12 @@ function filePresent(ui, file){
   }
   return undefined
 }
-function treerizeResponse(resp){
+function initTreerizeResponse(resp){
   let root = {type:'tree', path: [], name:'',children:[]}
+  return treerizeResponse(root,resp)
+}
+function treerizeResponse(root,resp){
+  //let root = {type:'tree', path: [], name:'',children:[]}
   let pt, br, node, name, newPath
 
   const typeMap ={
@@ -27,7 +31,9 @@ function treerizeResponse(resp){
     name = e.path.split('/').slice(-1)[0]
     br = getBranch(root, pt)
     newPath = !!br.name ? br.path.concat(br.name) : br.path
-    node = {type: typeMap[e.type], path: newPath, name: name, url: e.url, size: e.size, uuid: e.sha, content: null,status:''}
+    let uuid = !!e.sha ? e.sha : e.id
+    node = {type: typeMap[e.type], path: newPath, name: name, url: e.url, size: e.size, uuid: uuid, content: null,status:''}
+    //console.log('type',e.type)
     if(e.type==='tree') node = Object.assign(node, {children: []})
     br.children.push(node)
   })
@@ -80,4 +86,5 @@ function sortTypeName(nodes){
 export {
   filePresent,
   treerizeResponse,
+  initTreerizeResponse,
 }

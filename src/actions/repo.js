@@ -3,7 +3,7 @@ import R from 'ramda'
 import { action } from 'mobx';
 import { ui } from '../stores'
 import common from './common'
-import {filePresent, treerizeResponse} from '../utils/repo'
+import {filePresent, initTreerizeResponse, treerizeResponse} from '../utils/repo'
 import {repoUrl} from '../utils/url'
 
 const uiChangerValue = common.attrChangerValue(ui)
@@ -119,8 +119,24 @@ function setField(field, value){
 }
 
 //function getFileContent(el, pos){
+function getFileUrl(el){
+  //console.log('getFileUrl',el)
+  let {repoProvider, repoUser, repoName, repoBranch} = ui
+  switch(repoProvider){
+    case 'github':
+      return el.url
+    case 'gitlab':
+      let fpath = el.path.slice().join('%2F')//.replace('/','%2F').replace('.','%2E')
+      fpath = el.path.slice().length > 0 ? fpath.concat('%2F') : fpath
+      fpath = fpath.concat(el.name.replace('.','%2E'))
+      return `https://gitlab.com/api/v4/projects/${repoUser}%2F${repoName}/repository/files/${fpath}?ref=${repoBranch}`
+    default:
+      return ''
+  }
+}
 let getFileContent = (el, pos)=>{
-  axios.get(el.url)
+  let fileUrl = getFileUrl(el)
+  axios.get(fileUrl)
   .then((r)=>{
     //console.log('response content',r)
     //el.content = r.data.content
@@ -141,13 +157,63 @@ let changeLeaf = action( (uid, value)=>{
 }
 )
 
+function treeFromResponse(r, provider){
+  switch(provider){
+    case 'github':
+      return r.data.tree
+
+    case 'gitlab':
+      return r.data
+
+    default:
+      return r
+  }
+}
+function retrieveRestOfTree(root, resp, url){
+  let rr = resp
+  let myurl
+  let progress
+  let headers = rr.headers
+  //console.log(rr.headers['x-next-page'])
+  //console.log(rr.headers)
+
+  if(!!headers['x-next-page'] && headers['x-next-page'] > 1){
+    //console.log('next page ')
+    myurl = url+`&page=${rr.headers['x-next-page']}`
+    progress = (headers['x-page']/headers['x-total-pages'])*100
+    progress = Math.round(progress)
+    axios.get(myurl)
+    .then((r)=>{
+      root = treerizeResponse(root, treeFromResponse(r, ui.repoProvider)) 
+      //uiChangerValue('repo',R.clone(root))
+      uiChangerValue('repoLoadingProgress',progress)
+      rr = r
+      retrieveRestOfTree(root, rr, url)
+      //if(!!rr.headers['x-next-page'] && rr.headers['x-next-page'] > 1){
+      //  retrieveRestOfTree(root, rr, url)
+      //}
+      return r
+    })
+  }
+  else{
+    uiChangerValue('repo',R.clone(root))
+    uiChangerValue('repoLoading',false)
+  }
+}
 function getRepoTree(){
   let url = repoUrl(ui.repoProvider, ui.repoUser, ui.repoName, ui.repoBranch)
   //console.log('rul',url)
   axios.get(url)
   .then((r)=>{
-    let repoTree = treerizeResponse(r.data.tree) 
+    //console.log('response',r, treeFromResponse(r,ui.repoProvider))
+    //console.log('response',r)
+    let repoTree = initTreerizeResponse(treeFromResponse(r, ui.repoProvider)) 
+    uiChangerValue('mainLoading',false)
     uiChangerValue('repo',R.clone(repoTree))
+    if(ui.repoProvider === 'gitlab'){
+      uiChangerValue('repoLoading',true)
+      retrieveRestOfTree(repoTree, r, url) 
+    }
     return r
   })
   .then( r =>{

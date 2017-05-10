@@ -35,9 +35,11 @@ Feedback very much appreciated!
 - [x] Add empty page text
 - [x] Browse non-Master branches
 - [x] Chrome button as a toggle for RepoSplit view
+- [x] Add Gitlab compat public server
+- [x] Incremental tree retrieval for big repos(Gitlab)
+- [ ] Incremental tree retrieval for big repos/truncated(Github)
 - [ ] Offline storage
-- [ ] Check when Repo is truncated
-- [ ] Add Gitlab compat
+- [ ] Add Gitlab compat private servers
 - [ ] Add Bitbucket compat
 - [ ] Make Firefox extension
 - [ ] Tests, hello?
@@ -45,3 +47,6 @@ Feedback very much appreciated!
 - [ ] Live Markdown preview
 - [ ] NPanels > 4 ( Long one )
 
+## License
+
+MIT. See LICENSE for details.

@@ -1,6 +1,6 @@
 {
   "name": "code-viewer",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Git viewer",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "url": "git+ssh://git@github.com/git-toni/react-jwt-auth.git"
   },
   "author": "Toni U.",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/git-toni/react-jwt-auth/issues"
   },

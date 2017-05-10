@@ -32,6 +32,8 @@ function repoUrl(provider, user, repo, branch){
   switch(provider){
     case 'github':
       return `https://api.github.com/repos/${user}/${repo}/git/trees/${branch}?recursive=1`
+    case 'gitlab':
+      return `https://gitlab.com/api/v4/projects/${user}%2F${repo}/repository/tree?ref=${branch}&recursive=true&per_page=600`
     default:
       return ''
   }

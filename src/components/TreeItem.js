@@ -14,39 +14,11 @@ let {toggleFolder, openFile} = repo
 
 let depth = 0
 const vwWidth = document.documentElement.clientWidth
-/*
-@observer
-class TreeItem extends Component{
-  constructor(props){
-    super(props)
-  }
-  render(){
-    const {el, containerWidth, ui} = this.props
-    return item(el, containerWidth, ui)
-    //if(el.type === 'leaf'){
-    //  let isPresent = filePresent(ui, el)
-    //  let presence = !!isPresent ? isPresent : ''
-    //  //console.log('isPresent',isPresent)
-    //  //&#8984;
-    //  //return <div key={el.name}>ho</div>
-    //  return(
-    //    <div key={el.name} className={`tree-leaf isOpen-${presence}`} onClick={openFile.bind(null, el)}>
-    //      <FileO />
-    //      &nbsp;
-    //      {el.name}
-    //    </div>
-    //    )
-    //}
 
-    //return null
-  }
-}
-*/
 const item = (el, containerWidth, ui, depth=1) =>{
   if(el.type === 'leaf'){
     let isPresent = filePresent(ui, el)
     let presence = !!isPresent ? isPresent : ''
-    //console.log('isPresent',isPresent)
     //&#8984;
     return(
       <div key={el.name} className={`tree-leaf isOpen-${presence}`} onClick={openFile.bind(null, el)}>

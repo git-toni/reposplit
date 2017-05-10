@@ -5,6 +5,7 @@ import {Viewpanel} from './'
 import {evolveDimensions, evolveDimensionsPC, vh, vw, px, pc} from '../utils/styles'
 import {common, panels} from '../actions/'
 import FileO from 'react-icons/lib/fa/file-o'
+import CircleONotch from 'react-icons/lib/fa/circle-o-notch'
 
 @inject('ui') @observer
 class Viewport extends Component{
@@ -18,15 +19,26 @@ class Viewport extends Component{
   render(){
     let {ui} = this.props
     let finalStyle = evolveDimensionsPC({width:(100-ui.foldersWidth), maxWidth:(100-ui.foldersWidth)})
-    if(!ui.repoRetrieved) return null
+    //if(!ui.repoRetrieved) return null
 
-    if(!ui.anyFileOpen){
+    if(!ui.anyFileOpen && !ui.mainLoading){
       return(
         <div id='nofiles' style={finalStyle}>
           <span>
             Click on your desired file
             &nbsp;
             <FileO />
+          </span>
+        </div>
+      )
+    }
+    if(!!ui.mainLoading){
+      return(
+        <div id='nofiles' className='rretrieving-indicator' style={finalStyle}>
+          <span>
+            Retrieving initial tree
+            &nbsp;
+            <CircleONotch className='spinning'/>
           </span>
         </div>
       )

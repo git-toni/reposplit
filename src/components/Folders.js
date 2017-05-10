@@ -6,6 +6,7 @@ import {filePresent} from '../utils/repo'
 import {siteUrl} from '../utils/url'
 import GithubLogo from 'react-icons/lib/fa/github'
 import GitBranch from 'react-icons/lib/go/git-branch'
+import CircleONotch from 'react-icons/lib/fa/circle-o-notch'
 import TreeItem from './TreeItem'
 
 @inject('ui') @observer
@@ -37,6 +38,8 @@ class Folders extends Component{
           <GitBranch/>
           &nbsp;
           {ui.repoBranch}
+          &nbsp;
+          {this.rLoadingTree()}
         </span>
         <br/>
         <br/>
@@ -50,12 +53,44 @@ class Folders extends Component{
       //   </span>
       // </div>
   }
+  rLoadingTree(){
+    let {ui} = this.props
+    if(!!ui.repoLoading){
+      return(
+        <span className="retrieving-indicator">
+            {pc(ui.repoLoadingProgress)}      
+            &nbsp;
+            <CircleONotch className='retrieving-indicator spinning'/>
+        </span>
+      )
+      //return(
+      //  <div className="loading-indicator">
+      //    <span>
+      //      Retrieving tree
+      //      &nbsp;
+      //      <CircleONotch className='spinning'/>
+      //    </span>
+      //  </div>
+      //)
+    }
+  }
   repoLogo(){
-    return(
-      <span className="repo-logo">
-        <GithubLogo />
-      </span>
-    )
+    let {ui} = this.props
+    switch(ui.repoProvider){
+      case 'github':
+        return <GithubLogo />
+      case 'gitlab':
+        return <b>GLab</b>
+        //return <GitlabLogo />
+      default:
+        return <b>Repo</b>
+        //return <GithubLogo />
+    }
+    //return(
+    //  <span className="repo-logo">
+    //    <GithubLogo />
+    //  </span>
+    //)
   }
   renderRepo(){
     let {ui} = this.props

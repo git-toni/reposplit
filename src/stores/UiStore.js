@@ -31,7 +31,10 @@ class UiStore{
   @observable repoProvider = null
   @observable repoBranch = null
   @observable repoTruncated = false
+  @observable repoLoading = false
+  @observable repoLoadingProgress = 0
   @observable repo = null
+  @observable mainLoading = true
   /*
   @observable repo = {type:'tree',path:[], name:'', children: [
     {type:'leaf', path:[], name:'setup.rb', content:"ZGVmIGRpc2tmaWxlCiAgQGZpbGUuYXR0cmlidXRlc1s6bWFya3VwXSB8fD0g\nbWFya3VwX2Zvcl9maWxlKCcnLCBAZmlsZS5maWxlbmFtZSkKICBkYXRhID0g\naHRtbGlmeShAZmlsZS5jb250ZW50cywgQGZpbGUuYXR0cmlidXRlc1s6bWFy\na3VwXSkKCiAgIyBIYWNrIG91ciB3YXkgdG8gd29ya2luZyBoYXNoIGFuY2hv\ncnMgZm9yIHRoZSBSRUFETUUuCiAgIyBHaXRIdWIgZ2VuZXJhdGVzIGhlYWRl\nciBsaW5rcyBhcyAjc29tZS10aGluZyBhbmQgWUFSRAogICMgZ2VuZXJhdGVz\nIHRoZW0gYXMgI1NvbWVfdGhpbmcgc28gdGhpcyBtYWtlcyB0aGUgbmVjZXNz\nYXJ5CiAgIyBjaGFuZ2VzIHRvIHRoZSBnZW5lcmF0ZSBkb2NzIHNvIHRoZSBs\naW5rcyB3b3JrIGJvdGggb24KICAjIEdpdEh1YiBhbmQgaW4gdGhlIGRvY3Vt\nZW50YXRpb24uCiAgaWYgQGZpbGUubmFtZSA9PSAiUkVBRE1FIgogICAgZGF0\nYS5zY2FuKC9ocmVmXD1cIlwjKC4rKVwiLykuZWFjaCBkbyB8YmFkX2xpbmt8\nCiAgICAgIGRhdGEuZ3N1YiEoYmFkX2xpbmsuZmlyc3QsIGJhZF9saW5rLmZp\ncnN0LmNhcGl0YWxpemUuZ3N1YignLScsICdfJykpCiAgICBlbmQKICBlbmQK\nCiAgIjxkaXYgaWQ9J2ZpbGVjb250ZW50cyc+IiArIGRhdGEgKyAiPC9kaXY+\nIgplbmQK\n", uuid: guid()},
