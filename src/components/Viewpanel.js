@@ -6,6 +6,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco, github } from 'react-syntax-highlighter/dist/styles';
 import IconMaximize from 'react-icons/lib/md/zoom-out-map'
 import IconMinimize from 'react-icons/lib/md/dashboard'
+import IconClose from 'react-icons/lib/md/close'
 
 //import CodeMirror from 'react-codemirror'
 //require('codemirror/mode/javascript/javascript')
@@ -57,7 +58,9 @@ class Viewpanel extends Component{
             </span>
           }
           &nbsp; 
-          <span className="close" onClick={onClosePanel.bind(null, pos)}> X </span>
+          <span title='Close File' className="close" onClick={onClosePanel.bind(null, pos)}> 
+            <IconClose /> 
+          </span>
         </div>
         <SyntaxHighlighter wrapLines={true} language={detectLanguage(el.name)} style={docco}>
            {code}

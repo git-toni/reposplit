@@ -6,13 +6,16 @@
   padding: 0.6em;
   .buttonry{
     position: absolute;
-    top: 0px;
+    top: 4px;
     right: 25px;
     //padding: 3px 12px;
     opacity: 0.4;
     cursor: pointer;
     font-weight: 900;
-    font-size: 1.6em;
+    //font-size: 1.6em;
+    span > svg{
+      font-size: 1.1em;
+    }
     //border-radius: 20%/50%;
     //background: rgba($black,0.9);
     //color: lighten($black, 70);
@@ -20,6 +23,7 @@
       opacity: 0.85;
     }
     span.close{
+      //font-weight: bold;
       &:hover{
         color: $red;
         //background: yellow;
