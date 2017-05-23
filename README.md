@@ -15,7 +15,7 @@
 
 Often I find myself needing to read several files in a repository at once. And `git clone $repo` feels a bit too much just to have a quick look at the code.
 
-This is the v.0.1 attempt at making code browsing more pleasant :) 
+This is the v.0.2 attempt at making code browsing more pleasant :) 
 
 Feedback very much appreciated!
 
