@@ -39,13 +39,16 @@ Feedback very much appreciated!
 - [x] Incremental tree retrieval for big repos(Gitlab)
 - [ ] Incremental tree retrieval for big repos/truncated(Github)
 - [ ] Offline storage
-- [ ] Add Gitlab compat private servers
+- [ ] Add Gitlab compat private servers [issue#6](https://github.com/git-toni/reposplit/issues/6)
 - [ ] Add Bitbucket compat
 - [ ] Make Firefox extension
 - [ ] Tests, hello?
 - [ ] Allow Color Themes
 - [ ] Live Markdown preview
 - [ ] NPanels > 4 ( Long one )
+- [ ] Search within repository/files [issue#7](https://github.com/git-toni/reposplit/issues/7)
+- [ ] Choose the number of panels ( now it's always 4 ) [issue#8](https://github.com/git-toni/reposplit/issues/8)
+- [ ] Themes/font selector [issue#8](https://github.com/git-toni/reposplit/issues/8)
 
 ## License
 
